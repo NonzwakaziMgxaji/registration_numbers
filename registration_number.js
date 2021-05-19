@@ -75,6 +75,7 @@ showBtn.addEventListener("click", function () {
                 if (regNombolo.startsWith("CA")) {
                     let emptyArray =[];
                     emptyArray.push(regNombolo);
+                    console.log(emptyArray);
                     for( let i = 0; i < emptyArray.length; i++){
                         let spanElem = document.createElement("li");
                         spanElem.innerHTML =emptyArray[i];
@@ -119,7 +120,7 @@ showBtn.addEventListener("click", function () {
 
 showAll.addEventListener("click", function () {
     var localStorageData = JSON.parse(localStorage.getItem("regNumbers"));
-    // document.getElementById("showRegNumID").innerHTML = "";
+    document.getElementById("showRegNumID").innerHTML = "";
 
     for (var i = 0; i < localStorageData.length; i++) {
         localStorageData = Object.keys(regNumLocal);
