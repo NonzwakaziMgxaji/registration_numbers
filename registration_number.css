@@ -62,12 +62,25 @@ label[for="regN"]{
 
 input[type="text"]{
     width: 50%;
-    border: 2px solid #A5ADA7;;
+    border: 2px solid #A5ADA7;
     margin-left: 5px;
 }
 
-/* .addBtn{
-    /* float: right; */
-    /* margin-left:68%; */
-    /* position: relative; */
-/* }  */
+ul li{
+    border: 5px solid black;
+    background-color: yellow;
+    border-radius: 5px;
+    list-style: none;
+    width: 90px;
+    margin: auto;
+    font-weight: bold;
+}
+
+ul{
+    display: flex;
+}
+
+.errorMsg{
+    color: red;
+    font-weight: bold;
+}

@@ -13,21 +13,25 @@
     <div class="container">
         <h1>REGISTRATION NUMBER LIST</h1>
 
+         <span class="errorMsg" id="errorMsgID"></span><br><br>
+
         <div class="RegNum">
             <label for="regN">Registration Number</label>
-            <input class="RegTextbox" type="text" id="regText" name="regText" placeholder="format: CA 563-524 / CA 566924 / CAA 123 VB"
+            <input class="RegTextbox" type="text" id="regText" name="regText" placeholder="format: CA 123-456 / CY 123456/ CL 123 456"
                 required>
         </div><br>
 
         <button class="addBtn" type="button">ADD</button>
         <br><br>
         <div class=inputs>
-            <input class="radio" type="radio" name="town" id="malmesbury" value="malmesbury" required>
-            <label class="radioName" for="malmesbury">Malmesbury</label>
-            <input class="radio" type="radio" name="town" id="bellville" value="bellville" required>
-            <label class="radioName" for="bellville">Bellville</label>
             <input class="radio" type="radio" name="town" id="capetown" value="capetown" required>
             <label class="radioName" for="capetown">Cape Town</label>
+            <input class="radio" type="radio" name="town" id="bellville" value="bellville" required>
+            <label class="radioName" for="bellville">Bellville</label>
+            <input class="radio" type="radio" name="town" id="malmesbury" value="malmesbury" required>
+            <label class="radioName" for="malmesbury">Malmesbury</label>
+            <input class="radio" type="radio" name="town" id="stellie" value="stellenbosch" required>
+            <label class="radioName" for="stellenbosch">Stellenbosch</label>
         </div>
 
         <br>
@@ -35,42 +39,25 @@
             <label for="towns">Town:</label>
             <select name="towns" id="towns" placeholder="Select town">
                 <option value="" disabled selected>Select City</option>
-                <option value="capeTown">Cape Town</option>
-                <option value="paarl">Paarl</option>
-                <option value="george">George</option>
-                <option value="stellie">Stellenbosch</option>
+                <option value="capeTown">Cape Town(CA)</option>
+                <option value="paarl">Bellville(CY)</option>
+                <option value="george">Malmesbury(CK)</option>
+                <option value="stellie">Stellenbosch(CL)</option>
             </select>
         </div>
         <br>
-        <button onclick="abc()" class="showBtn" type="button">SHOW</button>
+        <button class="showBtn" type="button">SHOW</button>
+        <button class="showAllBtn" type="button">SHOW ALL</button>
+        <button class="resetBtn" type="button">RESET</button>
 
-        <span class="showRegNum" id="showRegNumID"></span>
+        <br><br>
+
+        <ul class="showRegNum" id="showRegNumID">
+        </ul>
     </div>
 
+    <script src="registration_number_factory.js" charset="utf-8"></script>
     <script src="registration_number.js" charset="utf-8"></script>
 </body>
 
 </html>
-<!-- 
-with a input box for registration number
-with a town/city filter
-with an add button
-display section for the registration numbers -->
-
-<!-- HTML elements to use in this exercise:
-
-inline elements for CSS & JavaScript
-input elements - text & buttons
-page sections - div, ul, li, span elements
-CSS
-CSS to use in this exercise:
-
-Setting element appearance - using color, background-color
-
-Rounded corners - border-radius
-
-The box model:
-
-to create space between elements
-to add borders
-Floats - for layout -->
