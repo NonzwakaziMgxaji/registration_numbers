@@ -1,26 +1,13 @@
-function regNumbersFactory(){
+function regNumbersFactory(existingReg) {
 
-    var regNumbersEntered = {};
-    var countRegNumbers = 0;
+    var regNumbersEntered = existingReg || {};
 
     function storedReg(regPlate) {
-        
-        regPlate = regPlate.toUpperCase();
-        var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
-        var testRegularExp = regex.test(regPlate)
-
         if (regNumbersEntered[regPlate] === undefined) {
             regNumbersEntered[regPlate] = 0;
-            countRegNumbers++;
         } else {
             regNumbersEntered[regPlate]++;
         }
-
-        return testRegularExp;
-    }
-
-    function inputReg(regNum) {
-        regNumbersEntered = regNum;
     }
 
     function showStoredReg() {
@@ -31,9 +18,8 @@ function regNumbersFactory(){
         return countRegNumbers
     }
 
-    return{
+    return {
         storedReg,
-        inputReg,
         showStoredReg,
         numOfReg,
     }
