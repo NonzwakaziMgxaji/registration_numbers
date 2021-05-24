@@ -49,10 +49,13 @@ addBtn.addEventListener("click", function () {
             error.innerHTML = "This registration number has already been entered!"
         } else {
             regNumSpan.appendChild(spanElem);
-            spanElem.classList.add("spanClass")
+            spanElem.classList.add("spanClass");
             spanElem.innerHTML = regPlate;
+            error.classList.remove("errorMsg");
+            error.classList.add("displayFeedback");
+            error.innerHTML = "Registration number added"
         }
-    } else {
+    } else if (!testRegularExp) {
         error.innerHTML = "Enter a valid registration number using format shown in textbox!"
     }
 
@@ -79,12 +82,21 @@ showBtn.addEventListener("click", function () {
 
         let regContainer = localStorageData.filter(localStorageReg => localStorageReg.startsWith(rad.value));
 
-        for (let i = 0; i < regContainer.length; i++) {
-            let spanElem = document.createElement("span");
-            spanElem.classList.add("spanClass");
-            spanElem.innerHTML = regContainer[i];
-            regNumSpan.appendChild(spanElem);
+        if (regContainer.length >= 1) {
+            for (let i = 0; i < regContainer.length; i++) {
+                let spanElem = document.createElement("span");
+                spanElem.classList.add("spanClass");
+                spanElem.innerHTML = regContainer[i];
+                regNumSpan.appendChild(spanElem);
+            }
+
+        } else {
+            error.classList.remove("displayFeedback");
+            error.classList.add("errorMsg");
+            error.innerHTML = "No registration number for this town yet!";
+            console.log("Hello");
         }
+
     } else if (!rad) {
         error.innerHTML = "Please select a town!"
     }
@@ -116,4 +128,12 @@ showAll.addEventListener("click", function () {
 reset.addEventListener('click', function () {
     localStorage.clear();
     location.reload();
+
+    error.classList.remove("errorMsg");
+    error.classList.add("displayFeedback");
+    error.innerHTML = "Local storage has been reset";
+
+    setTimeout(function () {
+        error.innerHTML = "";
+    }, 3000);
 });

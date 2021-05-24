@@ -61,7 +61,7 @@ label[for="regN"]{
 }
 
 input[type="text"]{
-    width: 50%;
+    width: 40%;
     border: 2px solid #A5ADA7;
     margin-left: 5px;
 }
@@ -80,5 +80,10 @@ input[type="text"]{
 
 .errorMsg{
     color: red;
+    font-weight: bold;
+}
+
+.displayFeedback{
+    color: green;
     font-weight: bold;
 }
