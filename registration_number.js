@@ -31,16 +31,17 @@ var regPlateInstance = regNumbersFactory(regNumLocal);
 
 //add button event listener
 addBtn.addEventListener("click", function () {
-    var regNumber = regNumEntered.value;
+    var regNumber = (regNumEntered.value).trim().toUpperCase();
 
     if (regPlateInstance.storedReg(regNumber)) {
         spanElem = document.createElement("span");
 
-        var regies = regPlateInstance.showStoredReg()
+        var regies = regPlateInstance.showStoredReg();
 
         localStorage.setItem('regNumbers', JSON.stringify(regies));
 
         if (regNumLocal[regNumber] > 0) {
+            
             error.innerHTML = "This registration number has already been entered!"
         } else {
             regNumSpan.appendChild(spanElem);
