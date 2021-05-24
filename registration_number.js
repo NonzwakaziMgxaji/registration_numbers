@@ -32,30 +32,25 @@ var regPlateInstance = regNumbersFactory(regNumLocal);
 //add button event listener
 addBtn.addEventListener("click", function () {
     var regNumber = regNumEntered.value;
-    var regPlate = regNumber.toUpperCase();
-    var regex = /^((CA|CY|CK|CL)\s\d{3}\-\d{3})$|^((CA|CY|CK|CL)\s\d{3}\d{3})$|^((CA|CY|CK|CL)\s\d{3}\s\d{3})$/;
-    var testRegularExp = regex.test(regPlate)
 
-    if (testRegularExp) {
+    if (regPlateInstance.storedReg(regNumber)) {
         spanElem = document.createElement("span");
-
-        regPlateInstance.storedReg(regPlate);
 
         var regies = regPlateInstance.showStoredReg()
 
         localStorage.setItem('regNumbers', JSON.stringify(regies));
 
-        if (regNumLocal[regPlate] > 0) {
+        if (regNumLocal[regNumber] > 0) {
             error.innerHTML = "This registration number has already been entered!"
         } else {
             regNumSpan.appendChild(spanElem);
             spanElem.classList.add("spanClass");
-            spanElem.innerHTML = regPlate;
+            spanElem.innerHTML = regNumber;
             error.classList.remove("errorMsg");
             error.classList.add("displayFeedback");
             error.innerHTML = "Registration number added"
         }
-    } else if (!testRegularExp) {
+    } else {
         error.innerHTML = "Enter a valid registration number using format shown in textbox!"
     }
 
@@ -91,10 +86,9 @@ showBtn.addEventListener("click", function () {
             }
 
         } else {
-            error.classList.remove("displayFeedback");
-            error.classList.add("errorMsg");
+            error.classList.remove("errorMsg");
+            error.classList.add("displayFeedback");
             error.innerHTML = "No registration number for this town yet!";
-            console.log("Hello");
         }
 
     } else if (!rad) {
