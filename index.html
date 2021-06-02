@@ -6,58 +6,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="registration_number.css">
+    <link rel="stylesheet" href="registration_numberTemplate.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
     <title>Document</title>
+
+    <script type="text/x-template" class="registrationTemplate">
+        {{#each reg}}
+          <p class="spanClass">{{this}}</p>
+        {{/each}}
+    </script>
+
 </head>
+
 
 <body>
     <div class="container">
-        <h1>REGISTRATION NUMBER LIST</h1>
+        <section class=regNumWidget>
+            <h1>REGISTRATION NUMBER LIST</h1>
 
-        <span class="errorMsg" id="errorMsgID"></span><br><br>
+            <span class="errorMsg" id="errorMsgID"></span><br><br>
 
-        <div class="RegNum">
-            <label for="regN">Registration Number</label>
-            <input class="RegTextbox" type="text" id="regText" name="regText"
-                placeholder="format: CA 123-456 / CY 123456/ CL 123 456" required>
-        </div><br>
+            <div class="RegNum">
+                <label for="regN">Registration Number</label>
+                <input class="RegTextbox" type="text" id="regText" name="regText"
+                    placeholder="format: CA 123-456 / CY 123456/ CL 123 456" required>
+            </div><br>
 
-        <button class="addBtn" type="button">ADD</button>
-        <br><br>
-        <div class=inputs>
-            <div class = rad1>
-                <input class="radio" type="radio" name="town" id="capetown" value="CA" required>
-                <label class="radioName" for="capetown">Cape Town</label>
-            </div>
-
-            <div class = rad1>
-                <input class="radio" type="radio" name="town" id="bellville" value="CY" required>
-                <label class="radioName" for="bellville">Bellville</label>
-            </div>
-
-            <div class = rad1>
-                <input class="radio" type="radio" name="town" id="malmesbury" value="CK" required>
-                <label class="radioName" for="malmesbury">Malmesbury</label>
-            </div>
-
-            <div class = rad1>
-                <input class="radio" type="radio" name="town" id="stellie" value="CL" required>
-                <label class="radioName" for="stellenbosch">Stellenbosch</label>
-            </div>
-
+            <button class="addBtn" type="button">ADD</button>
             <br><br>
+            <div class=inputs>
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="capetown" value="CA" required>
+                    <label class="radioName" for="capetown">Cape Town</label>
+                </div>
 
-            <button class="showBtn" type="button">SHOW</button>
-            <button class="showAllBtn" type="button">SHOW ALL</button>
-            <button class="resetBtn" type="button">RESET</button>
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="bellville" value="CY" required>
+                    <label class="radioName" for="bellville">Bellville</label>
+                </div>
 
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="malmesbury" value="CK" required>
+                    <label class="radioName" for="malmesbury">Malmesbury</label>
+                </div>
+
+                <div class=rad1>
+                    <input class="radio" type="radio" name="town" id="stellie" value="CL" required>
+                    <label class="radioName" for="stellenbosch">Stellenbosch</label>
+                </div>
+
+                <br><br>
+
+                <button class="showBtn" type="button">SHOW</button>
+                <button class="showAllBtn" type="button">SHOW ALL</button>
+                <button class="resetBtn" type="button">RESET</button>
+
+                <br><br>
+
+                <p class="showRegNum" id="showRegNumID">
+                </p>
+            </div>
+        </section>
+
+        <!-- Html for Template -->
+        <section class=regNumWidgetTemp>
+            <h1>REGISTRATION NUMBER LIST</h1>
+
+            <span class="errorMsgTemp" id="errorMsgID"></span><br><br>
+
+            <div class="RegNumTemp">
+                <label for="regN">Registration Number</label>
+                <input class="RegTextboxTemp" type="text" id="regText" name="regText"
+                    placeholder="format: CA 123-456 / CY 123456/ CL 123 456" required>
+            </div><br>
+
+            <button class="addBtnTemp" type="button">ADD</button>
             <br><br>
+            <div class=inputsTemp>
+                <div class=rad1Temp>
+                    <input class="radioTemp" type="radio" name="town" id="capetown" value="CA" required>
+                    <label class="radioName" for="capetown">Cape Town</label>
+                </div>
 
-            <p class="showRegNum" id="showRegNumID">
-            </p>
-        </div>
+                <div class=rad1Temp>
+                    <input class="radioTemp" type="radio" name="town" id="bellville" value="CY" required>
+                    <label class="radioName" for="bellville">Bellville</label>
+                </div>
 
-        <script src="registration_number_factory.js" charset="utf-8"></script>
-        <script src="registration_number.js" charset="utf-8"></script>
+                <div class=rad1Temp>
+                    <input class="radioTemp" type="radio" name="town" id="malmesbury" value="CK" required>
+                    <label class="radioName" for="malmesbury">Malmesbury</label>
+                </div>
+
+                <div class=rad1Temp>
+                    <input class="radioTemp" type="radio" name="town" id="stellie" value="CL" required>
+                    <label class="radioName" for="stellenbosch">Stellenbosch</label>
+                </div>
+
+                <br><br>
+
+                <button class="showBtnTemp" type="button">SHOW</button>
+                <button class="showAllBtnTemp" type="button">SHOW ALL</button>
+                <button class="resetBtnTemp" type="button">RESET</button>
+
+                <br><br>
+
+                <p class="showRegNumTemp"  id="showRegNumID">
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="registration_number_factory.js" charset="utf-8"></script>
+    <script src="registration_number.js" charset="utf-8"></script>
+    <script src="regNumTemplate.js" charset="utf-8"></script>
 </body>
 
 </html>

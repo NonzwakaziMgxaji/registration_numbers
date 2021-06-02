@@ -17,7 +17,8 @@ if (localStorage["regNumbers"]) {
 
 window.onload = (event) => {
     let reggies = Object.keys(regNumLocal)
-
+    // let regUpperCase = (regNumEnteredTemplate.value).toUpperCase()
+    // if (!regNumLocal[regUpperCase] > 0) {
     for (let i = 0; i < reggies.length; i++) {
         let spanElem = document.createElement("span");
         spanElem.classList.add("spanClass");
@@ -41,7 +42,6 @@ addBtn.addEventListener("click", function () {
         localStorage.setItem('regNumbers', JSON.stringify(regies));
 
         if (regNumLocal[regNumber] > 0) {
-            
             error.innerHTML = "This registration number has already been entered!"
         } else {
             regNumSpan.appendChild(spanElem);
@@ -122,7 +122,8 @@ showAll.addEventListener("click", function () {
 //reset button event to clear local storage
 reset.addEventListener('click', function () {
     localStorage.clear();
-    location.reload();
+    // location.reload();
+    regNumSpan.innerHTML = "";
 
     error.classList.remove("errorMsg");
     error.classList.add("displayFeedback");

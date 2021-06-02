@@ -10,7 +10,7 @@ function regNumbersFactory(existingReg) {
 
         if (regNumbersEntered[regPlate] === undefined) {
             regNumbersEntered[regPlate] = 0;
-            countRegNumbers++;
+            // countRegNumbers++;
         } else {
             regNumbersEntered[regPlate]++;
         }

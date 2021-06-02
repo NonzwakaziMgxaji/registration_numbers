@@ -12,7 +12,7 @@ body{
    display:flex;
 }
 
-.regNumWidget{
+.regNumWidgetTemp{
 	width:50%;
     border: 15px solid #A5ADA7;
     margin-right: 50px;
@@ -20,7 +20,7 @@ body{
     margin-left: 50px;
 }
 
-.regNum{
+.regNumTemp{
 	width:50%;
     border: 15px solid #A5ADA7;
     margin-left: 50px;
@@ -38,23 +38,23 @@ select:invalid{
     color: gray;
 }
 
-.RegTextBox{
+.RegTextBoxTemp{
     height: 100px;
     font-size: 14pt;
 }
 
-.RegNum{
+.RegNumTemp{
     width: 100%;
 }
 
 @media only screen and (min-width: 768px){
-    .rad1{
+    .rad1Temp{
         display: inline-block;
     }   
 }
 
 @media only screen and (max-width: 768px){
-    label[for="towns"]{
+    labelTemplate[for="towns"]{
         font-weight: bold;
     }
 }
@@ -66,7 +66,7 @@ select:invalid{
 }
 
 @media only screen and (max-width: 671px){
-    .inputs{
+    .inputsTemp{
         width: 100%;
     }
 }
@@ -81,7 +81,7 @@ input[type="text"]{
     margin-left: 5px;
 }
 
-.spanClass{
+.spanClassTemp{
     border: 5px solid black;
     background-color: yellow;
     border-radius: 5px;
@@ -93,12 +93,12 @@ input[type="text"]{
     display: inline-block;
 }
 
-.errorMsg{
+.errorMsgTemp{
     color: red;
     font-weight: bold;
 }
 
-.displayFeedback{
+.displayFeedbackTemp{
     color: green;
     font-weight: bold;
 }
