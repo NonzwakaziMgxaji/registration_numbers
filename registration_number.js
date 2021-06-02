@@ -95,13 +95,13 @@ showBtn.addEventListener("click", function () {
     } else if (!rad) {
         error.innerHTML = "Please select a town!"
     }
-
+    rad.checked = false;
     //removes error message after 3 seconds
     setTimeout(function () {
         error.innerHTML = "";
     }, 3000);
 
-    rad.checked = false;
+    // rad.checked = false;
 });
 
 //showAll button event display all the reg numbers in local storage

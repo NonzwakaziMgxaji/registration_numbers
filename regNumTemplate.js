@@ -22,25 +22,26 @@ if (localStorage["regNumbers1"]) {
 }
 
 window.onload = (event) => {
-    // let reggies = Object.keys(regNumLocal)
-    // let regUpperCase = (regNumEnteredTemplate.value).toUpperCase()
-    // if(!regNumLocal[regUpperCase]>0){
-    //     for (let i = 0; i < reggies.length; i++) {
-    //         let spanElem = document.createElement("span");
-    //         spanElem.classList.add("spanClass");
-    //         spanElem.innerHTML = reggies[i];
-    //         regNumSpan.appendChild(spanElem);
-    //     }
-    // }
+    localStorageData = Object.keys(regNumLocalTemp);
 
+    regNumSpanTemp.innerHTML = "";
 
-    let reggies = Object.keys(regNumLocalTemp)
-    for (let i = 0; i < reggies.length; i++) {
+    for (var i = 0; i < localStorageData.length; i++) {
         let spanElem = document.createElement("span");
         spanElem.classList.add("spanClassTemp");
-        spanElem.innerHTML = reggies[i];
-        // regNumSpanTemp.appendChild(spanElem);
-        regNumSpanTemp.innerHTML = regElemCompile({reg : reggies});
+        spanElem.innerHTML += localStorageData[i] + " ";
+        regNumSpanTemp.appendChild(spanElem);
+
+        regNumSpanTemp.innerHTML = regElemCompile({reg : localStorageData});
+
+
+    // let reggies = Object.keys(regNumLocalTemp)
+    // for (let i = 0; i < reggies.length; i++) {
+    //     let spanElem = document.createElement("span");
+    //     spanElem.classList.add("spanClassTemp");
+    //     spanElem.innerHTML = reggies[i];
+    //     // regNumSpanTemp.appendChild(spanElem);
+    //     regNumSpanTemp.innerHTML = regElemCompile({reg : reggies});
     }
 };
 
@@ -52,9 +53,6 @@ var regPlateInstanceTemp = regNumbersFactory(regNumLocalTemp);
 addBtnTempElem.addEventListener("click", function () {
     var regNumberTemp = (regNumEnteredTemp.value).trim().toUpperCase();
 
-    //    compile the template
-    //  var regDataHTML = registrationTemplate(regggg);
-    // regNumSpanTemp.innerHTML = regDataHTML;
     let reggies = Object.keys(regNumLocalTemp)
 
     if (regPlateInstanceTemp.storedReg(regNumberTemp)) {
@@ -72,7 +70,7 @@ addBtnTempElem.addEventListener("click", function () {
 
             // regNumSpanTemp.appendChild(spanElem);
             spanElem.classList.add("spanClassTemp");
-            // spanElem.innerHTML = regNumberTemp;
+            spanElem.innerHTML = regNumberTemp;
             // regNumSpanTemp.innerHTML = regElemCompile({ reg: reggies });
 
             errorTemp.classList.remove("errorMsgTemp");
@@ -158,6 +156,9 @@ resetTemp.addEventListener('click', function () {
     localStorage.clear();
     // location.reload();
     regNumSpanTemp.innerHTML = "";
+  
+// window.localStorage.clear();
+// sessionStorage.clear();
 
     errorTemp.classList.remove("errorMsgRemp");
     errorTemp.classList.add("displayFeedbackTemp");
