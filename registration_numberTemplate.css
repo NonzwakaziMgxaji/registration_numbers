@@ -87,6 +87,7 @@ input[type="text"]{
     border-radius: 5px;
     list-style: none;
     width: 90px;
+    padding-left: 10px;
     margin: auto;
     font-weight: bold;
     text-transform: uppercase;

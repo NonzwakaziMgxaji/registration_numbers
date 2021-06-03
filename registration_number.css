@@ -88,6 +88,7 @@ input[type="text"]{
     list-style: none;
     width: 90px;
     margin: auto;
+    padding-left: 10px;
     font-weight: bold;
     text-transform: uppercase;
     display: inline-block;

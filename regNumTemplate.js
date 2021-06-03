@@ -23,7 +23,6 @@ if (localStorage["regNumbers1"]) {
 
 window.onload = (event) => {
     localStorageData = Object.keys(regNumLocalTemp);
-
     regNumSpanTemp.innerHTML = "";
 
     for (var i = 0; i < localStorageData.length; i++) {
@@ -31,17 +30,7 @@ window.onload = (event) => {
         spanElem.classList.add("spanClassTemp");
         spanElem.innerHTML += localStorageData[i] + " ";
         regNumSpanTemp.appendChild(spanElem);
-
-        regNumSpanTemp.innerHTML = regElemCompile({reg : localStorageData});
-
-
-    // let reggies = Object.keys(regNumLocalTemp)
-    // for (let i = 0; i < reggies.length; i++) {
-    //     let spanElem = document.createElement("span");
-    //     spanElem.classList.add("spanClassTemp");
-    //     spanElem.innerHTML = reggies[i];
-    //     // regNumSpanTemp.appendChild(spanElem);
-    //     regNumSpanTemp.innerHTML = regElemCompile({reg : reggies});
+        regNumSpanTemp.innerHTML = regElemCompile({ reg: localStorageData });
     }
 };
 
@@ -53,26 +42,24 @@ var regPlateInstanceTemp = regNumbersFactory(regNumLocalTemp);
 addBtnTempElem.addEventListener("click", function () {
     var regNumberTemp = (regNumEnteredTemp.value).trim().toUpperCase();
 
-    let reggies = Object.keys(regNumLocalTemp)
 
     if (regPlateInstanceTemp.storedReg(regNumberTemp)) {
         let spanElem = document.createElement("span");
 
         var regies = regPlateInstanceTemp.showStoredReg();
 
-        localStorage.setItem('regNumbers1', JSON.stringify(regies));
+
+        let reggies = Object.keys(regNumLocalTemp)
 
         if (regNumLocalTemp[regNumberTemp] > 0) {
             errorTemp.innerHTML = "This registration number has already been entered!"
         } else {
+            localStorage.setItem('regNumbers1', JSON.stringify(regies));
+
             regNumSpanTemp.appendChild(spanElem);
             regNumSpanTemp.innerHTML = regElemCompile({ reg: reggies });
-
-            // regNumSpanTemp.appendChild(spanElem);
             spanElem.classList.add("spanClassTemp");
             spanElem.innerHTML = regNumberTemp;
-            // regNumSpanTemp.innerHTML = regElemCompile({ reg: reggies });
-
             errorTemp.classList.remove("errorMsgTemp");
             errorTemp.classList.add("displayFeedbackTemp");
             errorTemp.innerHTML = "Registration number added"
@@ -113,7 +100,7 @@ showBtnTemp.addEventListener("click", function () {
                 spanElem.classList.add("spanClass");
                 spanElem.innerHTML = regContainer[i];
                 // regNumSpanTemp.appendChild(spanElem);
-                regNumSpanTemp.innerHTML = regElemCompile({reg : regContainer});
+                regNumSpanTemp.innerHTML = regElemCompile({ reg: regContainer });
             }
 
         } else {
@@ -145,22 +132,17 @@ showAllTemp.addEventListener("click", function () {
         let spanElem = document.createElement("span");
         spanElem.classList.add("spanClass");
         spanElem.innerHTML += localStorageData[i] + " ";
-        // regNumSpanTemp.appendChild(spanElem);
-
-        regNumSpanTemp.innerHTML = regElemCompile({reg : localStorageData});
+        regNumSpanTemp.innerHTML = regElemCompile({ reg: localStorageData });
     }
 });
 
 //reset button event to clear local storage
 resetTemp.addEventListener('click', function () {
-    localStorage.clear();
-    // location.reload();
+    window.localStorage.removeItem('regNumbers1')
+    location.reload();
     regNumSpanTemp.innerHTML = "";
-  
-// window.localStorage.clear();
-// sessionStorage.clear();
 
-    errorTemp.classList.remove("errorMsgRemp");
+    errorTemp.classList.remove("errorMsgTemp");
     errorTemp.classList.add("displayFeedbackTemp");
     errorTemp.innerHTML = "Local storage has been reset";
 

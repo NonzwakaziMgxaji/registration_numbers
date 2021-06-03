@@ -15,17 +15,14 @@ if (localStorage["regNumbers"]) {
     regNumLocal = JSON.parse(localStorage.getItem("regNumbers"));
 }
 
-window.onload = (event) => {
-    let reggies = Object.keys(regNumLocal)
-    // let regUpperCase = (regNumEnteredTemplate.value).toUpperCase()
-    // if (!regNumLocal[regUpperCase] > 0) {
-    for (let i = 0; i < reggies.length; i++) {
-        let spanElem = document.createElement("span");
-        spanElem.classList.add("spanClass");
-        spanElem.innerHTML = reggies[i];
-        regNumSpan.appendChild(spanElem);
-    }
-};
+reggies = Object.keys(regNumLocal)
+console.log("dfghjkl");
+for (let i = 0; i < reggies.length; i++) {
+    let spanElem = document.createElement("span");
+    spanElem.classList.add("spanClass");
+    spanElem.innerHTML += reggies[i];
+    regNumSpan.appendChild(spanElem);
+}
 
 //instantiation of factory function
 var regPlateInstance = regNumbersFactory(regNumLocal);
@@ -39,11 +36,11 @@ addBtn.addEventListener("click", function () {
 
         var regies = regPlateInstance.showStoredReg();
 
-        localStorage.setItem('regNumbers', JSON.stringify(regies));
-
         if (regNumLocal[regNumber] > 0) {
             error.innerHTML = "This registration number has already been entered!"
         } else {
+            localStorage.setItem('regNumbers', JSON.stringify(regies));
+
             regNumSpan.appendChild(spanElem);
             spanElem.classList.add("spanClass");
             spanElem.innerHTML = regNumber;
@@ -121,8 +118,8 @@ showAll.addEventListener("click", function () {
 
 //reset button event to clear local storage
 reset.addEventListener('click', function () {
-    localStorage.clear();
-    // location.reload();
+    window.localStorage.removeItem('regNumbers');
+    location.reload();
     regNumSpan.innerHTML = "";
 
     error.classList.remove("errorMsg");
