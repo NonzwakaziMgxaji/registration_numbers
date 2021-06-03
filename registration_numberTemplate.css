@@ -92,6 +92,7 @@ input[type="text"]{
     font-weight: bold;
     text-transform: uppercase;
     display: inline-block;
+    margin-right: 10px;
 }
 
 .errorMsgTemp{
